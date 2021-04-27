@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'org.s3rgh'
+compileJava.options.encoding = 'UTF-8'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'org.testng', name: 'testng', version: '7.4.0'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.4.1'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
+    implementation group: 'com.beust', name: 'jcommander', version: '1.81'
+
+
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useTestNG()
+}

@@ -1,5 +1,8 @@
 package dto;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("user")
 public class User {
     private String login;
     private String password;

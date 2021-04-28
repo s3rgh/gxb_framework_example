@@ -16,14 +16,34 @@ dependencies {
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.4.1'
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
     implementation group: 'com.beust', name: 'jcommander', version: '1.81'
-
-
+    implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.16'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-test {
-    useTestNG()
+task testDisk (type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/testng-disk.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('headless')) {
+        systemProperty 'headless', "${headless}"
+    }
+}
+
+task testMail (type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/testng-mail.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('headless')) {
+        systemProperty 'headless', "${headless}"
+    }
 }

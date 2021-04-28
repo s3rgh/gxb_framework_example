@@ -114,13 +114,15 @@ public class ApplicationManager {
         webDriver = new ChromeDriver(options);
     }
 
-    public void stop() throws IOException {
+    public void stop() {
         webDriver.quit();
         webDriver = null;
-        initialize();
     }
 
-    public void open() {
+    public void open() throws IOException {
+        if (webDriver == null) {
+            initialize();
+        }
         webDriver.get("https://yandex.ru/");
     }
 

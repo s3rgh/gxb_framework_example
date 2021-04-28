@@ -20,6 +20,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class YandexLoginDiskTest extends TestBase {
 
+    static {
+        String format = System.getProperty("format");
+    }
+
+
+
     @DataProvider
     public Iterator<Object[]> validUsersFromCsv() throws IOException {
         List<Object[]> list = new ArrayList<>();
@@ -68,7 +74,7 @@ public class YandexLoginDiskTest extends TestBase {
     }
 
     @Test(dataProvider = "validUsersFromXml")
-    public void yandexLoginDiskTest(User user) {
+    public void yandexLoginDiskTest(User user) throws IOException {
         app.open();
         app.getDesk().choose("Диск");
         app.getTab().toNumber(2);

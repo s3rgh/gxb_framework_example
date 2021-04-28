@@ -8,7 +8,9 @@ import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -66,7 +68,7 @@ public class YandexLoginMailTest extends TestBase {
     }
 
     @Test(dataProvider = "validUsersFromJson")
-    public void yandexLoginMailTest(User user) {
+    public void yandexLoginMailTest(User user) throws IOException {
         app.open();
         app.getDesk().choose("Почта");
         app.getTab().toNumber(2);

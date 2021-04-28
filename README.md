@@ -15,3 +15,7 @@
 `-Pbrowser=firefox/chrome`
 
 `-Pheadless=on/off`
+
+for example: 
+
+`gradle clean testMail -Pbrowser=firefox -Pheadless=off`
